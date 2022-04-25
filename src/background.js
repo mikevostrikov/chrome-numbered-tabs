@@ -42,11 +42,11 @@ function updateTab( tab, allTabs ) {
 	const numTabs = Math.max( ...allTabs.filter( t => t.windowId == windowId ).map( t => t.index ) ) + 1
 
   /* logic for redoing title with numeric prefix */
-	const prefixRegEx = /^[0-9-]+. /g
+	const prefixRegEx = /^[0-9-]+:/g
 	const num = index + 1
-	let newPrefix = num <= 8 ? `${num}. ` :
-					        num >= 9 && num === numTabs ? '9. ' :
-					        '-. '
+	let newPrefix = num <= 8 ? `${num}:` :
+					        num >= 9 && num === numTabs ? '9:' :
+					        ''
 
 	const hasPrefix = prefixRegEx.exec( title )
 	if ( hasPrefix && hasPrefix[0] && hasPrefix[0] === newPrefix ) {
